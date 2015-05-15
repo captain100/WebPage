@@ -1,6 +1,8 @@
 /**
  * Created by user on 14-10-24.
  */
+
+var int;
 $(document).ready(function(){
 
     $("#about").click(function(){
@@ -9,10 +11,11 @@ $(document).ready(function(){
         $(".about-main").show();
         $(".showindex-about").css({
             "position": "relative",
-            "width": "961px",
-            "height": "606px",
-            "margin": "0px auto",
-            "background-color": "#000000"
+            "width": "916px",
+            "height": "559px",
+            "margin": "15px auto",
+            "background-color": "#000000",
+            "box-shadow": "0px 0px 10px #222"
         });
         $("#specific-div-id").show(function(){
             $("#specific-div-id").hide();
@@ -29,10 +32,11 @@ $(document).ready(function(){
         $("#product-main-div").show();
         $(".showindex-product").css({
             "position": "relative",
-            "width": "961px",
-            "height": "606px",
-            "margin": "0px auto",
-            "background-color": "#000000"
+            "width": "916px",
+            "height": "559px",
+            "margin": "15px auto",
+            "background-color": "#000000",
+            "box-shadow": "0px 0px 10px #222"
         });
         $("#specific-div-id").show(function(){
             $("#specific-div-id").hide();
@@ -47,27 +51,48 @@ $(document).ready(function(){
         $(".show-img").show();
         $(".showindex-staff").css({
             "position": "relative",
-            "width": "961px",
-            "height": "606px",
-            "margin": "0px auto",
-            "background-color": "#000000"
+            "width": "916px",
+            "height": "559px",
+            "margin": "15px auto",
+            "background-color": "#000000",
+            "box-shadow": "0px 0px 10px #222"
         });
+        int = setInterval(show,300);
+
+
         $("#specific-div-id").show(function(){
             $("#specific-div-id").hide();
             $("#show-index-id").hide();
             $("#show-staff-id").fadeIn("show","swing");
         });
     });
+    function show(){
+        var employers = document.getElementById("employersID");
+        var i;
+        for(i=0;i<employers.children.length;i++){
+            if(employers.children[i].style.display =='none'){
+                employers.children[i].style.display ="inline";
+
+                return;
+            }
+        }
+
+//        if(i==employers.children.length){
+//            window.clearInterval();
+//        }
+    }
+
     $("#message").click(function(){
         $(".page-title").show();
         $(".about-img").show();
         $(".about-main").show();
         $(".showindex-message").css({
             "position": "relative",
-            "width": "961px",
-            "height": "606px",
+            "width": "916px",
+            "height": "559px",
             "margin": "0px auto",
-            "background-color": "#000000"
+            "background-color": "#000000",
+            "box-shadow": "0px 0px 10px #222"
         });
         $("#specific-div-id").show(function(){
             $("#specific-div-id").hide();
@@ -76,8 +101,27 @@ $(document).ready(function(){
         });
     });
     $("#sendBT").click(function(){
-        $("#show-message-id").hide();
-        $("#show-success-id").fadeIn();
+        var inputEmailt  = $("#inputEmail").val();
+        var inputName = $("#inputName").val();
+        var contectId = $("#contect_id").val();
+        var reg = /\w+[@]{1}\w+[.]\w+/;
+        if(!reg.test(inputEmailt)){
+            alert("你输入的email不正确");
+
+        }else if(inputName == ""){
+            alert("你输入的姓名不能为空！");
+
+        }else if(contectId == ""){
+            alert("你输入的内容不能为空！");
+
+        }else{
+//            document.getElementById('mailTo').href="mailto:hi@museera.com‍?cc=hi@museera.com‍&subject='联系公司'&body="+'联系人:'+inputName+'email:'+inputEmailt+'内容：'+contectId;
+//            document.getElementById('mailTo').click();
+//            $("#sendBT").submit();
+            this.form.submit();
+            $("#show-message-id").hide();
+            $("#show-success-id").fadeIn();
+        }
 
     });
     $("#back-index").click(function(){
@@ -118,7 +162,15 @@ $(document).ready(function(){
             $("#show-index-id").show();
             $("#show-staff-id").removeClass();
         });
+        clearInterval(int);
+        hideEmployers();
     });
+    function hideEmployers(){
+        var employers = document.getElementById("employersID");
+        for(var i=0;i<employers.children.length;i++){
+                employers.children[i].style.display ="none";
+        }
+    }
 
     $("#back-index4").click(function(){
         $(".page-title").hide();
@@ -140,7 +192,7 @@ $(document).ready(function(){
 
     $("#idealBT").click(function(){
         $("#idealBTP").css({
-            "background-image":"url('../img/show_emp/smallshadow.png')",
+            "background-image":"url('./img/show_emp/smallshadow.png')",
             "background-repeat":"no-report"
         });
         $("#outlineBTP").css({
@@ -157,7 +209,7 @@ $(document).ready(function(){
     });
     $("#outline-button").click(function(){
         $("#outlineBTP").css({
-            "background-image":"url('../img/show_emp/smallshadow.png')",
+            "background-image":"url('./img/show_emp/smallshadow.png')",
             "background-repeat":"no-report"
         });
         $("#idealBTP").css({
@@ -174,7 +226,7 @@ $(document).ready(function(){
     });
     $("#chairmans-button").click(function(){
         $("#chairmansBTP").css({
-            "background-image":"url('../img/show_emp/smallshadow.png')",
+            "background-image":"url('./img/show_emp/smallshadow.png')",
             "background-repeat":"no-report"
         });
         $("#outlineBTP").css({
@@ -190,28 +242,36 @@ $(document).ready(function(){
         $("#chairmans-id").show();
     });
     $("#wedateBT").click(function(){
-        $("#wedateBTP").css({
-            "background-image":"url('../img/show_emp/smallshadow.png')",
-            "background-repeat":"no-report"
-        });
+//        $("#wedateBTP").css({
+//            "background-image":"url('./img/show_emp/smallshadow.png')",
+//            "background-repeat":"no-report"
+//        });
         $("#booklistBTP").css({
             "background-image":"url('')",
             "background-repeat":"no-report"
         });
         $("#booklist-id").hide();
-        $("#wedate-id").slideDown(1000);
+        $("#booklist_content").hide();
+
+        $("#wedate-id").show();
+        $('#wedate_content').slideDown(1000);
     });
     $("#booklistBT").click(function(){
-        $("#booklistBTP").css({
-            "background-image":"url('../img/show_emp/smallshadow.png')",
-            "background-repeat":"no-report"
-        });
+//        $("#booklistBTP").css({
+//            "background-image":"url('./img/show_emp/smallshadow.png')",
+//            "background-repeat":"no-report"
+//        });
         $("#wedateBTP").css({
             "background-image":"url('')",
             "background-repeat":"no-report"
         });
         $("#wedate-id").hide();
-        $("#booklist-id").slideDown(1000);
+        $("#wedate_content").hide();
+        $("#booklist-id").show();
+        $("#booklist_content").slideDown(1000);
     });
 
 });
+//$(window).scroll(function(){
+//   $(window).scrollTop(0);
+//});

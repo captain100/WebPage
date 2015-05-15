@@ -420,7 +420,7 @@ CM.intro = {
     iniScr: function(){
         var scroller  = null;
         var scrollbar = null;
-        scroller  = new Scrolling.Scroller(document.getElementById('dv_scroll'), 430, 209);
+        scroller  = new Scrolling.Scroller(document.getElementById('dv_scroll'), 436, 209);
         scrollbar = new Scrolling.Scrollbar(document.getElementById('dv_scroll_bar'), scroller, new Scrolling.ScrollTween());
     }
 };
